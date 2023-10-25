@@ -1,5 +1,7 @@
 package py.com.semp.lib.log.configuration;
 
+import py.com.semp.lib.log.enumerations.LoggerOutput;
+
 /**
  * Contains the value of constants used in the project.
  * 
@@ -39,5 +41,29 @@ public interface Values
 		public static final String MESSAGES_BASE_NAME = "messages";
 	}
 	
-	public static interface Utilitites extends py.com.semp.lib.utilidades.configuration.Values {}
+	public interface VariableNames
+	{
+		//Enum variables
+		/**
+		 * Indicates where the destination of the log output.
+		 */
+		public static final String LOGGER_OUTPUT = "loggerOutput";
+	}
+	
+	/**
+	 * Contains constants with default values.
+	 * 
+	 * @author Sergio Morel
+	 */
+	public interface Defaults
+	{
+		/**
+		 * Indicates where the destination of the log output.
+		 */
+		public static final LoggerOutput LOGGER_OUTPUT = LoggerOutput.FILE;
+	}
+	
+	public static interface Utilitites extends py.com.semp.lib.utilidades.configuration.Values
+	{
+	}
 }
