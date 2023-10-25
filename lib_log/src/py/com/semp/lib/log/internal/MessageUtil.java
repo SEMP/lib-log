@@ -1,6 +1,6 @@
 package py.com.semp.lib.log.internal;
 
-import py.com.semp.lib.utilidades.configuration.Values;
+import py.com.semp.lib.log.configuration.Values;
 import py.com.semp.lib.utilidades.messages.MessageKey;
 import py.com.semp.lib.utilidades.messages.MessageManager;
 
