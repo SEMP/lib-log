@@ -5,14 +5,13 @@ import java.util.concurrent.ConcurrentHashMap;
 import py.com.semp.lib.log.internal.MessageUtil;
 import py.com.semp.lib.log.internal.Messages;
 import py.com.semp.lib.log.loggers.JSONLogger;
-import py.com.semp.lib.log.loggers.UtilLogger;
+import py.com.semp.lib.utilidades.log.Logger;
 
-public final class LoggerFactory
+public final class LoggerManager
 {
-	private static final ConcurrentHashMap<String, UtilLogger> UTIL_LOGGERS = new ConcurrentHashMap<>();
-	private static final ConcurrentHashMap<String, JSONLogger> JSON_LOGGERS = new ConcurrentHashMap<>();
+	private static final ConcurrentHashMap<String, Logger> LOGGERS = new ConcurrentHashMap<>();
 	
-	private LoggerFactory()
+	private LoggerManager()
 	{
 		super();
 		
@@ -21,18 +20,21 @@ public final class LoggerFactory
 		throw new AssertionError(errorMessage);
 	}
 	
-	public static UtilLogger getLogger(String context)
+	private static Logger getDefaultLogger()
 	{
-		checkContextName(context);
-		
-		return UTIL_LOGGERS.computeIfAbsent(context, (key) -> new UtilLogger());
+		return new JSONLogger();
 	}
 	
-	public static JSONLogger getJSONLogger(String context)
+	public static Logger getLogger(String context)
 	{
 		checkContextName(context);
 		
-		return JSON_LOGGERS.computeIfAbsent(context, (key) -> new JSONLogger());
+		return LOGGERS.computeIfAbsent(context, (key) -> getDefaultLogger());
+	}
+	
+	public static void setLogger(String context, Logger logger)
+	{
+		LOGGERS.put(context, logger);
 	}
 	
 	private static void checkContextName(String context)
