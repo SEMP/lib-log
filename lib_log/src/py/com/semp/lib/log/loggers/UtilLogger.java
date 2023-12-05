@@ -19,4 +19,11 @@ public class UtilLogger implements Logger
 		System.out.println(message);
 		System.out.println(throwable.getMessage());
 	}
+
+	@Override
+	public boolean isDebugging()
+	{
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

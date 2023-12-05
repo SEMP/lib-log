@@ -33,4 +33,11 @@ public class JSONLogger implements Logger
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	@Override
+	public boolean isDebugging()
+	{
+		// TODO Auto-generated method stub
+		return false;
+	}
 }
